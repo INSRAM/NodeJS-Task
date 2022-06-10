@@ -23,7 +23,7 @@
         - JWT token will assign
         - At the end response will be send with 200 status code.
 
-> Profile get route
+> Profile get routes
 
     -  /
         -  JWT token will be check
