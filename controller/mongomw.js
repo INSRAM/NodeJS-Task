@@ -1,4 +1,4 @@
-import users from "../../model/userSchema.js";
+import users from "../model/userSchema.js";
 import { validationResult } from "express-validator";
 
 // user creating with validation

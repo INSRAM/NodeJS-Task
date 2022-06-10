@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUser } from "../middleware/mongomw.js";
+import { deleteUser } from "../controller/mongomw.js";
 
 const routes = express.Router();
 
