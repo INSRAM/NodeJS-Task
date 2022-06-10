@@ -9,7 +9,7 @@
 
 > Login and Sinup post routes (JWT used for authentication)
 
-    -   `/singup`
+    .   /singup
         - Request body will be checked is it empty or not
         - Authenticate the Textfields
         - User will be created if email will not exist in database (unique email will use for signup).
