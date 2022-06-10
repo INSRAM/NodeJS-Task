@@ -9,10 +9,9 @@
 
 > Login and Sinup post routes (JWT used for authentication)
 
-    - ** /singup ** post route
+    - ``` ** /singup ** post route ```
         - Request body will be checked is it empty or not
         - Authenticate the Textfields
         - User will be created if email will not exist in database (unique email will use for signup).
         - JWT token will assign
         - At the end response will be send with 200 status code.
-
