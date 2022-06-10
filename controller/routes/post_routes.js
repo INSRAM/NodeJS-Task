@@ -1,10 +1,12 @@
 import express from "express";
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 import { bodyCheck, signCookie, logout_ } from "../middleware/checkingmw.js";
 import { createUser, loginUser } from "../middleware/mongomw.js";
 
 const routes = express.Router();
+// Post routes
 
+// sign Up route
 routes.post(
   "/signup",
   bodyCheck,
@@ -16,6 +18,8 @@ routes.post(
     res.status(200).send("Successfull Added!");
   }
 );
+
+// Sign In route
 routes.post(
   "/signin",
   bodyCheck,

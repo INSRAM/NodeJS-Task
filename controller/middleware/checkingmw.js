@@ -28,31 +28,12 @@ function signCookie(req, res, next) {
   next();
 }
 
+// checking cookie
 function checkCookie(req, res, next) {
   jwt.verify(req.cookies.token, process.env.key, (err, decoded) => {
-    // if (err) return res.status(400).json({ error: err });
-    // req.body.cookie_mail = "admin@mailj.com";
-    // req.body.cookie_mail = decoded.email;
-    req.body.cookie_mail = "admin@mail.com";
+    if (err) return res.status(400).json({ error: err });
+    req.body.cookie_mail = decoded.email;
     next();
   });
 }
-// verifying cookie
-function verifyCookie(req, res, next) {
-  console.log("coming in");
-  // next();
-  // jwt.verify(req.cookies.token, process.env.key, function (err, decoded) {
-  //   if (err) {
-  //     return res.redirect("/login");
-  //   } else if (req.url == "/login") {
-  //     req.body = decoded;
-  //     return res.redirect("/");
-  //   } else if (req.url == "/signup") {
-  //     req.body = decoded;
-  //     return res.redirect("/");
-  //   }
-  //   req.body = decoded;
-  //   next();
-  // });
-}
-export { bodyCheck, signCookie, checkCookie, verifyCookie, logout_ };
+export { bodyCheck, signCookie, checkCookie, logout_ };

@@ -4,6 +4,7 @@ import { bodyCheck } from "../middleware/checkingmw.js";
 
 const routes = express.Router();
 
+//  Patch route for update data
 routes.patch("/updatedata", bodyCheck, updateInfo);
 
 export default routes;

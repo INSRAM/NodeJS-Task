@@ -33,8 +33,8 @@ async function loginUser(req, res, next) {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    // finding user from database
 
+    // finding user from database
     const userfind = await users.findOne(req.body);
     if (userfind === null) return res.status(500).send("User not found").end();
   } catch (error) {
