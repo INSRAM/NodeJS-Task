@@ -2,16 +2,11 @@ import express from "express";
 import "dotenv/config";
 import get_ from "./routes/get_routes.js";
 import post_ from "./routes/post_routes.js";
-import update_ from "./routes/patch_routes.js";
-import delete_ from "./routes/delete_routes.js";
-import AppError from "./utils/apperror.js";
 import { globalHandler } from "./controller/errorController.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import path from "path";
 const app = express();
-const __dirname = path.resolve();
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -37,12 +32,7 @@ mongoose.connect(
 // calling route
 app.use("/", get_);
 app.use("/", post_);
-app.use("/", update_);
-app.use("/", delete_);
 
-// app.all("*", (req, res, next) => {
-//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-// });
 app.use(globalHandler);
 
 // App Listen Port

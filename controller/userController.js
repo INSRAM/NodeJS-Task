@@ -33,7 +33,7 @@ async function createUser(req, res, next) {
   //   validation of body
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return next(new AppError(errors.array(), 400));
   }
 
   try {
@@ -58,6 +58,7 @@ async function createUser(req, res, next) {
   }
 }
 
+// User login
 async function loginUser(req, res, next) {
   if (Object.keys(req.body).length === 0) {
     return next(new AppError("Body is empty", 204));
@@ -67,7 +68,6 @@ async function loginUser(req, res, next) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return next(new AppError(errors.array(), 400));
-      // return res.status(400).json({ errors: errors.array() });
     }
 
     // finding user from database
