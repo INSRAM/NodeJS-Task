@@ -18,7 +18,6 @@ async function checkUsertype(user_email, next) {
     const userfind = await users.findOne({ email: user_email });
     if (!userfind) {
       return next(new AppError("user does not exist", 500));
-      //   return res.status(500).send("user does not exist");
     }
 
     return userfind.userType;
@@ -28,8 +27,6 @@ async function checkUsertype(user_email, next) {
 }
 
 const returningUserData = async (user_email, user_type, req, res, next) => {
-  //   console.log("this is user", req.cookies.token);
-  //   res.status(200).send("everry thing fine");
   try {
   } catch (error) {}
   if (user_type === "admin") {
@@ -50,11 +47,9 @@ const returningUserData = async (user_email, user_type, req, res, next) => {
 
 // getting data
 async function getData(req, res, next) {
-  // calling checkCookie function
   var cookie_result = checkCookie(req.cookies.token);
   if (!cookie_result.email) return next(new AppError(cookie_result, 500));
 
-  //   var user_type = await checkUsertype("kdfjs@dsd.com", next);
   var user_type = await checkUsertype(cookie_result.email, next);
   if (user_type !== undefined)
     returningUserData(cookie_result.email, user_type, req, res, next);
